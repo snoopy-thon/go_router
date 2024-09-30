@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:go_router_/ui/personal_info.dart';
 import 'ui/error_page.dart';
 import 'constants.dart';
 import 'login_state.dart';
@@ -41,6 +42,15 @@ class MyRouter {
             tab: tab ?? '',
           );
         },
+        routes: [
+          GoRoute(
+            name: profilePersonalRouteName,
+            path: 'personal',
+            builder: (context, state) {
+              return const PersonalInfo();
+            },
+          ),
+        ],
       ),
     ],
     redirect: (context, state) {
