@@ -28,9 +28,11 @@
  * THE SOFTWARE.
  */
 import 'package:flutter/material.dart';
+import 'package:go_router_/login_state.dart';
+import 'package:provider/provider.dart';
 
 class MoreInfo extends StatefulWidget {
-  const MoreInfo({Key? key}) : super(key: key);
+  const MoreInfo({super.key});
 
   @override
   _MoreInfoState createState() => _MoreInfoState();
@@ -82,15 +84,18 @@ class _MoreInfoState extends State<MoreInfo> {
                 borderRadius: BorderRadius.circular(10.0),
               ),
               color: Colors.white,
-              child: const Align(
+              child: Align(
                 alignment: Alignment.center,
                 child: Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: ListTile(
-                    title: Text(
-                      'Rate the App',
+                    title: const Text(
+                      'Log out',
                       style: TextStyle(fontWeight: FontWeight.bold),
                     ),
+                    onTap: () {
+                      logOut(context);
+                    },
                   ),
                 ),
               ),
@@ -99,5 +104,9 @@ class _MoreInfoState extends State<MoreInfo> {
         ),
       ),
     );
+  }
+
+  void logOut(BuildContext context) {
+    Provider.of<LoginState>(context, listen: false).loggedIn = false;
   }
 }
