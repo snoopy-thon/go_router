@@ -28,13 +28,15 @@
  * THE SOFTWARE.
  */
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:go_router_/constants.dart';
 import '../cart_holder.dart';
 import 'package:provider/provider.dart';
 
 class Details extends StatelessWidget {
   final String description;
 
-  const Details({Key? key, required this.description}) : super(key: key);
+  const Details({super.key, required this.description});
 
   @override
   Widget build(BuildContext context) {
@@ -58,9 +60,9 @@ class Details extends StatelessWidget {
             ),
             ElevatedButton(
               style: ButtonStyle(
-                foregroundColor: MaterialStateProperty.all<Color>(
+                foregroundColor: WidgetStateProperty.all<Color>(
                     Theme.of(context).primaryColor),
-                shape: MaterialStateProperty.all<OutlinedBorder>(
+                shape: WidgetStateProperty.all<OutlinedBorder>(
                   RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(4.0),
                     side: BorderSide(color: Theme.of(context).primaryColor),
@@ -70,8 +72,8 @@ class Details extends StatelessWidget {
               onPressed: () {
                 Provider.of<CartHolder>(context, listen: false)
                     .addItem(description);
-		    // TODO: Add Root Route
-               },
+                context.goNamed(rootRouteName, pathParameters: {'tab': 'cart'});
+              },
               child: const Text(
                 'Add To Cart',
                 style: TextStyle(color: Colors.white),
