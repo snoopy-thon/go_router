@@ -11,6 +11,7 @@ class MyRouter {
   MyRouter({required this.loginState});
 
   late final router = GoRouter(
+    initialLocation: '/login',
     errorBuilder: (context, state) {
       return ErrorPage(
         error: state.error,
