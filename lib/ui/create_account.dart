@@ -28,13 +28,15 @@
  * THE SOFTWARE.
  */
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:go_router_/router.dart';
 import 'package:provider/provider.dart';
 
 import '../constants.dart';
 import '../login_state.dart';
 
 class CreateAccount extends StatefulWidget {
-  const CreateAccount({Key? key}) : super(key: key);
+  const CreateAccount({super.key});
 
   @override
   _CreateAccountState createState() => _CreateAccountState();
@@ -105,9 +107,9 @@ class _CreateAccountState extends State<CreateAccount> {
                     Expanded(
                       child: ElevatedButton(
                         style: ButtonStyle(
-                          foregroundColor: MaterialStateProperty.all<Color>(
+                          foregroundColor: WidgetStateProperty.all<Color>(
                               Theme.of(context).primaryColor),
-                          shape: MaterialStateProperty.all<OutlinedBorder>(
+                          shape: WidgetStateProperty.all<OutlinedBorder>(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(4.0),
                               side: BorderSide(
@@ -131,8 +133,8 @@ class _CreateAccountState extends State<CreateAccount> {
                       child: ElevatedButton(
                         style: ButtonStyle(
                           foregroundColor:
-                              MaterialStateProperty.all<Color>(Colors.white),
-                          shape: MaterialStateProperty.all<OutlinedBorder>(
+                              WidgetStateProperty.all<Color>(Colors.white),
+                          shape: WidgetStateProperty.all<OutlinedBorder>(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(4.0),
                               side: const BorderSide(color: Colors.white),
@@ -141,6 +143,7 @@ class _CreateAccountState extends State<CreateAccount> {
                         ),
                         onPressed: () {
                           // TODO: Add Login Route
+                          context.go('/login');
                         },
                         child: const Text('Cancel'),
                       ),
