@@ -33,23 +33,24 @@ class MyRouter {
         },
       ),
       GoRoute(
-        path: '/',
+        path: '/:tab',
         name: rootRouteName,
         builder: (context, state) {
+          final tab = state.pathParameters['tab'];
           return HomeScreen(
-            tab: 'shopping',
+            tab: tab ?? '',
           );
         },
       ),
     ],
     redirect: (context, state) {
-      // 조건에 맞게
+      // 조건 설정
       final loggedIn = loginState.loggedIn;
       final inAuthPages = state.matchedLocation.contains(loginRouteName) ||
           state.matchedLocation.contains(createAccountRouteName);
 
       // inAuth && true => go to home
-      if (inAuthPages && loggedIn) return '/';
+      if (inAuthPages && loggedIn) return '/shop';
 
       // not inAuth && false => go to loginPage
       if (!inAuthPages && !loggedIn) return '/login';
