@@ -28,11 +28,13 @@
  * THE SOFTWARE.
  */
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:go_router_/router.dart';
 
 import '../constants.dart';
 
 class Shopping extends StatelessWidget {
-  const Shopping({Key? key}) : super(key: key);
+  const Shopping({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +48,8 @@ class Shopping extends StatelessWidget {
             onTap: () {
               final value = items[index];
               // TODO: Add Push Details Route
+              context.goNamed(shopDetailsRouteName,
+                  pathParameters: {'tab': 'shop', 'item': value});
             },
           );
         },

@@ -1,5 +1,9 @@
 import 'package:go_router/go_router.dart';
-import 'package:go_router_/ui/personal_info.dart';
+import 'package:go_router_/ui/payment.dart';
+import 'ui/details.dart';
+import 'ui/more_info.dart';
+import 'ui/personal_info.dart';
+import 'ui/signin_info.dart';
 import 'ui/error_page.dart';
 import 'constants.dart';
 import 'login_state.dart';
@@ -49,6 +53,28 @@ class MyRouter {
             builder: (context, state) {
               return const PersonalInfo();
             },
+          ),
+          GoRoute(
+            name: shopDetailsRouteName,
+            path: 'details/:item',
+            builder: (context, state) => Details(
+              description: state.pathParameters['item']!,
+            ),
+          ),
+          GoRoute(
+            name: profilePaymentRouteName,
+            path: 'payment',
+            builder: (context, state) => const Payment(),
+          ),
+          GoRoute(
+            name: profileSigninInfoRouteName,
+            path: 'signin-info',
+            builder: (context, state) => const SigninInfo(),
+          ),
+          GoRoute(
+            name: profileMoreInfoRouteName,
+            path: 'more-info',
+            builder: (context, state) => const MoreInfo(),
           ),
         ],
       ),

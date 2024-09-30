@@ -30,6 +30,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:go_router_/router.dart';
+import 'package:go_router_/ui/payment.dart';
 import 'package:go_router_/ui/personal_info.dart';
 
 import '../constants.dart';
@@ -93,6 +94,8 @@ class _ProfileState extends State<Profile> {
               ),
               onTap: () {
                 // TODO: Add Payment Route
+                context.pushNamed(profilePaymentRouteName,
+                    pathParameters: {'tab': 'profile'});
               },
             ),
           ),
@@ -109,6 +112,8 @@ class _ProfileState extends State<Profile> {
               ),
               onTap: () {
                 // TODO: Add Signin Info Route
+                context.pushNamed(profileSigninInfoRouteName,
+                    pathParameters: {'tab': 'profile'});
               },
             ),
           ),
@@ -125,6 +130,8 @@ class _ProfileState extends State<Profile> {
           ),
           onTap: () {
             // TODO: Add More Info Route
+            context.pushNamed(profileMoreInfoRouteName,
+                pathParameters: {'tab': 'profile'});
           },
         ),
       ),
