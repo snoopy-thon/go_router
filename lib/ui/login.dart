@@ -28,13 +28,15 @@
  * THE SOFTWARE.
  */
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:go_router_/router.dart';
 import 'package:provider/provider.dart';
 
 import '../constants.dart';
 import '../login_state.dart';
 
 class Login extends StatefulWidget {
-  const Login({Key? key}) : super(key: key);
+  const Login({super.key});
 
   @override
   _LoginState createState() => _LoginState();
@@ -105,9 +107,9 @@ class _LoginState extends State<Login> {
                     Expanded(
                       child: ElevatedButton(
                         style: ButtonStyle(
-                          foregroundColor: MaterialStateProperty.all<Color>(
+                          foregroundColor: WidgetStateProperty.all<Color>(
                               Theme.of(context).primaryColor),
-                          shape: MaterialStateProperty.all<OutlinedBorder>(
+                          shape: WidgetStateProperty.all<OutlinedBorder>(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(4.0),
                               side: BorderSide(
@@ -117,6 +119,7 @@ class _LoginState extends State<Login> {
                         ),
                         onPressed: () {
                           // TODO: Add Create Account Route
+                          context.goNamed(createAccountRouteName);
                         },
                         child: const Text(
                           'Create Account',
@@ -131,8 +134,8 @@ class _LoginState extends State<Login> {
                       child: ElevatedButton(
                         style: ButtonStyle(
                           foregroundColor:
-                              MaterialStateProperty.all<Color>(Colors.white),
-                          shape: MaterialStateProperty.all<OutlinedBorder>(
+                              WidgetStateProperty.all<Color>(Colors.white),
+                          shape: WidgetStateProperty.all<OutlinedBorder>(
                             RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(4.0),
                               side: const BorderSide(color: Colors.white),
