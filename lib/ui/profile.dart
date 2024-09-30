@@ -28,11 +28,14 @@
  * THE SOFTWARE.
  */
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
+import 'package:go_router_/router.dart';
+import 'package:go_router_/ui/personal_info.dart';
 
 import '../constants.dart';
 
 class Profile extends StatefulWidget {
-  const Profile({Key? key}) : super(key: key);
+  const Profile({super.key});
 
   @override
   _ProfileState createState() => _ProfileState();
@@ -72,6 +75,8 @@ class _ProfileState extends State<Profile> {
               ),
               onTap: () {
                 // TODO: Add Personal Page Route
+                context.pushNamed(profilePersonalRouteName,
+                    pathParameters: {'tab': 'profile'});
               },
             ),
           ),
