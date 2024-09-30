@@ -1,5 +1,5 @@
 import 'package:go_router/go_router.dart';
-import 'package:go_router_/ui/error_page.dart';
+import 'ui/error_page.dart';
 import 'constants.dart';
 import 'login_state.dart';
 import 'ui/create_account.dart';
@@ -42,6 +42,19 @@ class MyRouter {
         },
       ),
     ],
+    redirect: (context, state) {
+      // 조건에 맞게
+      final loggedIn = loginState.loggedIn;
+      final inAuthPages = state.matchedLocation.contains(loginRouteName) ||
+          state.matchedLocation.contains(createAccountRouteName);
+
+      // inAuth && true => go to home
+      if (inAuthPages && loggedIn) return '/';
+
+      // not inAuth && false => go to loginPage
+      if (!inAuthPages && !loggedIn) return '/login';
+      return null;
+    },
     refreshListenable: loginState,
     debugLogDiagnostics: true,
   );
